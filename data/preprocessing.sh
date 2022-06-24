@@ -1,12 +1,14 @@
 #!/bin/bash
 
-src=$en
+src=$"en"
 tgt=$1
 path=$2 #YOUR/PATH/FOR/PARALLEL/CORPUS, point our your path of folder for downloaded corpora 
 fastalign=$3
 
 mkdir ${path}vectors/
 mkdir ${path}aligned/
+
+echo "$path$src-$tgt.txt"
 
 python create_sen.py --file $path$src-$tgt.txt --en_file $path$src.txt --lg_file $path$tgt.txt
 python bert_token_sen.py --src $src --tgt $tgt --src_file $path${src}.txt --tgt_file $path${tgt}.txt --write_src_file $path${src}_token.txt --write_tgt_file $path${tgt}_token.txt

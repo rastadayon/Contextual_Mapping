@@ -371,10 +371,14 @@ def main():
     examples_tgt = read_examples(args.open_tgt_file)
 
     logger.info("finishing reading.")
+    logger.info("starting creating source features.")
     features_src = convert_examples_to_features(
         examples=examples_src, seq_length=args.max_seq_length, tokenizer=tokenizer_src)
+    logger.info("completed creating source features.")
+    logger.info("starting creating target features.")
     features_tgt = convert_examples_to_features(
         examples=examples_tgt, seq_length=args.max_seq_length, tokenizer=tokenizer_tgt)
+    logger.info("completed creating target features.")
 
     unique_id_to_feature = {}
     for feature in features_src:
